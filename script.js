@@ -19,20 +19,24 @@ function searchCitySubmit(event) {
        
       console.log(data[0].lat);
       console.log(data[0].lon);
+      
+      
     })
-  
+        
+    var lat = lat.value;
+    var lon = lon.value;
     
 
-  //   var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data[i].lat + '&' + data.lon + '&units=imperial&exclude={part}&appid=d5c3f6289a5941c4842a8f2f928b3c55';
+    var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + lon + '&units=imperial&exclude={part}&appid=d5c3f6289a5941c4842a8f2f928b3c55';
 
-  //   fectch(oneCallUrl)
-  //   .then(function (response) {
-  //     return response.json();
-  //   })
-  //   .then(function (data) {
-  //     console.log(data)
+    fectch(oneCallUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data)
     
-  // });
+  });
 
   
 //   if (!city) {
@@ -59,7 +63,12 @@ function searchCitySubmit(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        // console.log(data);
+        console.log(data.current.temp);
+        console.log(data.current.wind_speed);
+        console.log(data.current.humidity);
+        console.log(data.current.uvi);
+
       });
 
     }
