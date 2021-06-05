@@ -7,6 +7,33 @@ function searchCitySubmit(event) {
   var city = searchInputVal.value;
 
   console.log(city);
+
+  var geoCodingUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=d5c3f6289a5941c4842a8f2f928b3c55';
+  
+  fetch(geoCodingUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    // console.log(data);
+       
+      console.log(data[0].lat);
+      console.log(data[0].lon);
+    })
+  
+    
+
+  //   var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data[i].lat + '&' + data.lon + '&units=imperial&exclude={part}&appid=d5c3f6289a5941c4842a8f2f928b3c55';
+
+  //   fectch(oneCallUrl)
+  //   .then(function (response) {
+  //     return response.json();
+  //   })
+  //   .then(function (data) {
+  //     console.log(data)
+    
+  // });
+
   
 //   if (!city) {
 //     console.error('Please enter a city!');
