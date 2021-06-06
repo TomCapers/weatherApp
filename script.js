@@ -55,7 +55,6 @@ function searchCitySubmit(event) {
 
 
   function getApi() {
-    // fetch request gets a list of all the repos for the node.js organization
     var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=42.3584&lon=-71.0598&units=imperial&exclude=minutely,hourly,alerts&appid=d5c3f6289a5941c4842a8f2f928b3c55';
   
     fetch(requestUrl)
@@ -68,6 +67,13 @@ function searchCitySubmit(event) {
         console.log(data.current.wind_speed);
         console.log(data.current.humidity);
         console.log(data.current.uvi);
+
+        console.log(data.daily[0].temp.day);
+        console.log(data.daily[0].wind_speed);
+        console.log(data.daily[0].humidity);
+        
+
+        
 
       });
 
