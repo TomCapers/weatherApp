@@ -1,11 +1,17 @@
 var searchFormEl = document.querySelector('#search-form');
 var searchInputVal = document.querySelector('#search-input');
+var lat = "";
+var lon = "";
+var searchHistory = document.querySelector('#citySearch');
 
 function searchCitySubmit(event) {
   event.preventDefault();
 
   var city = searchInputVal.value;
 
+  localStorage.setItem('searchCity', city);
+
+  
   console.log(city);
 
   var geoCodingUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=d5c3f6289a5941c4842a8f2f928b3c55';
@@ -20,24 +26,24 @@ function searchCitySubmit(event) {
       console.log(data[0].lat);
       console.log(data[0].lon);
       
-      
-    })
-        
-    var lat = lat.value;
-    var lon = lon.value;
-    
+      lat = data[0].lat;
+      lon = data[0].lon;
+      var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&units=imperial&appid=d5c3f6289a5941c4842a8f2f928b3c55';
 
-    var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&' + lon + '&units=imperial&exclude={part}&appid=d5c3f6289a5941c4842a8f2f928b3c55';
-
-    fectch(oneCallUrl)
+    fetch(oneCallUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
+      console.log(data) 
+    })
+        
+      
     
   });
 
+
+  
   
 //   if (!city) {
 //     console.error('Please enter a city!');
@@ -51,7 +57,23 @@ function searchCitySubmit(event) {
   // one call API : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=imperial&exclude={part}&appid=d5c3f6289a5941c4842a8f2f928b3c55
 
   // GeoCoding API : http://api.openweathermap.org/geo/1.0/direct?q={city name}&appid=d5c3f6289a5941c4842a8f2f928b3c55
+  function init(){
+    var cityList = localStorage.getItem('searchCity');
+    console.log(cityList);
 
+    searchHistory.innerHTML = "";
+
+    var button = document.createElement("button");
+
+    button.setAttribute("class", "btn");
+
+    button.textContent = cityList;
+
+    searchHistory.append(button);
+
+  }
+
+  init();
 
 
   function getApi() {
