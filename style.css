@@ -3,3 +3,10 @@ header{
     background-color: blue;
     color: cornsilk;
 }
+
+.fiveDay{
+    background-image: linear-gradient(to bottom, rgb(178, 228, 228) , rgb(219, 186, 219));
+    padding: auto;
+
+
+}
