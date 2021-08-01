@@ -5,8 +5,19 @@ header{
 }
 
 .fiveDay{
-    background-image: linear-gradient(to bottom, rgb(178, 228, 228) , rgb(219, 186, 219));
+    background-image: linear-gradient(to bottom, rgb(45, 48, 243) , rgb(78, 4, 97));
     padding: auto;
+    border-style: solid;
+    padding: 25px 25px 25px 25px;
+    color: cornsilk;
 
 
+}
+
+.current{
+    
+    text-align: center;
+    background-color: blue;
+    color: cornsilk;
+    padding-bottom: 9px;
 }
