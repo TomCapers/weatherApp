@@ -1,7 +1,19 @@
+body{
+    background-color: lightgray;
+}
+
 header{
     text-align: center;
     background-color: blue;
     color: cornsilk;
+}
+
+.current{
+    
+    text-align: center;
+    background-color: blue;
+    color: cornsilk;
+    padding-bottom: 9px;
 }
 
 .fiveDay{
@@ -14,10 +26,5 @@ header{
 
 }
 
-.current{
-    
-    text-align: center;
-    background-color: blue;
-    color: cornsilk;
-    padding-bottom: 9px;
-}
+
+
