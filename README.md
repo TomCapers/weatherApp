@@ -9,4 +9,4 @@ This is a weather dashboard to search for weather conditions by city. It uses th
 
  The following image shows the web application's appearance and functionality:
 
- ![Screenshot of Weather Dashboard](./assets/Screenshot 2021-08-01 154710.png)
+ ![Screenshot of Weather Dashboard](/assets/Screenshot 2021-08-01 154710.png)
