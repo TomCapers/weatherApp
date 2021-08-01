@@ -6,7 +6,14 @@ var searchHistory = document.querySelector('#citySearch');
 var currentEl = document.querySelector('#current');
 var dailyEl = document.querySelector('#fiveDay');
 var day = new Date();
-var cities = [];
+
+
+if(localStorage.getItem("searchCity")){
+  var cities = JSON.parse(localStorage.getItem("searchCity"));
+  init();
+}else{
+  var cities = [];
+}
 
 function clearContent(clear) { //function to clear results from previous search
   while(clear.firstChild) {
@@ -15,8 +22,9 @@ function clearContent(clear) { //function to clear results from previous search
 }
 
 
-function searchCitySubmit(event) {
-  event.preventDefault();
+
+function searchCitySubmit() {
+ 
 
   clearContent(currentEl);
   clearContent(dailyEl);
@@ -24,7 +32,7 @@ function searchCitySubmit(event) {
   var city = searchInputVal.value;
   cities.push(city);
   localStorage.setItem('searchCity', JSON.stringify(cities));
-
+  init();
   
   console.log(city);
 
@@ -124,16 +132,26 @@ function searchCitySubmit(event) {
 
     button.setAttribute("class", "btn");
 
-    button.textContent = cityList;
+    button.textContent = cityList[i];
 
     searchHistory.append(button);
+      console.log(this.textContent)
+    button.addEventListener('click', function(){
+      document.querySelector('#search-input').value=this.textContent
+      searchCitySubmit()
+    })
     }
 
+
+
   }
-
-  init();
-
-
+ 
+  
 
 
-searchFormEl.addEventListener('submit', searchCitySubmit);
+
+
+searchFormEl.addEventListener('submit', function(event){
+  event.preventDefault();
+  searchCitySubmit()
+});
