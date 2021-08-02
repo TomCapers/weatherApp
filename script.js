@@ -92,7 +92,9 @@ function searchCitySubmit() {
         var forecastDay = document.createElement('p');
         forecastDay.textContent = ` (${day.getMonth() + 1}/${day.getDate()}/${day.getFullYear()})`
         var forecastIcon = document.createElement('p');
-        forecastIcon.textContent = data.daily[i].weather[0].main;
+        var icon = data.daily[i].weather[0].icon
+        var imgURL = "https://openweathermap.org/img/w/" + icon + ".png"
+        forecastIcon.innerHTML = "<img src=" + imgURL + ">";
         var forecastTemp = document.createElement('p');
         forecastTemp.textContent = "Temp:" + data.daily[i].temp.day
         var forecastWind = document.createElement('p');
